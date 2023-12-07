@@ -9,6 +9,7 @@ const io = new Server(server, {
 	cors:{
 		origin:"https://discord.com",
 		methods:["GET", "POST"],
+		credentials:true
 	}
 })
 
