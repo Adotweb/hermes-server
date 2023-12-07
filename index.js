@@ -9,8 +9,10 @@ const io = new Server(server, {
 	cors:{
 		origin:"https://discord.com",
 		methods:["GET", "POST"],
-		credentials:true
-	}
+		credentials:true,
+		transports:["websocket", "polling"]
+	},
+	allowEIO3: true
 })
 
 const cors = require("cors");
@@ -41,6 +43,8 @@ app.post("login", (req, res) => {
 io.on("connection", socket => {
 	
 	let auth = socket.handshake.auth 
+	
+	console.log(auth)
 
 	socket.join(auth.token);
 
