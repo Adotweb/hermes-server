@@ -18,40 +18,49 @@ wss.on("connection", ws => {
 	
 	ws.on("message", msg => {
 		
-		const {type, data} = JSON.parse(msg.toString());
-	
-		console.log(msg)
+		msg = msg.toString()
+
+		const {type, data} = JSON.parse(msg);
+			
 		
 		switch(type){
 			case "host-login":
 				hosts.set(data.id, ws);
 				
-				console.log("new host")
-				
+				ws.id = data.id	
+
 				break;
 
 			case "client-login":
 				clients.set(data.id, ws);
 				
-				console.log("new client")
+				ws.id = data.id
 				break;
 			
 			case "disconnect-host":
 				hosts.delete(data.id)	
 
-				console.log("host " + data.id + "disconnected")
+				ws.id = data.id
 
 				break;
 
 			case "disconnect-client": 
 				clients.delete(data.id)	
-	
-				console.log("client " + data.id + "disconnected")			
+
+
+				ws.id = data.id
 				break;
 		}		
 
 	})
+
+	ws.on("close", () => {
+		clients.delete(ws.id) 
+
+		console.log(ws.id, clients.size)
+	})
 })
+
 
 const cors = require("cors");
 
