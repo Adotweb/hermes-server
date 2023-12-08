@@ -8,9 +8,46 @@ const {WebSocketServer} = require("ws");
 
 const wss = new WebSocketServer({server})
 
+
+
+const hosts = new Map(); 
+const clients = new Map();
+
+
 wss.on("connection", ws => {
-	console.log("connection")
+	
 	ws.on("message", msg => {
+		
+		const {type, data} = JSON.parse(msg);
+		
+		
+		switch(type){
+			case "host-login":
+				hosts.set(data.id, ws);
+				
+				console.log("new host")
+				
+				break;
+
+			case "client-login":
+				clients.set(data.id, ws);
+				
+				console.log("new client")
+				break;
+			
+			case "disconnect-host":
+				hosts.delete(data.id)	
+
+				console.log("host " + data.id + "disconnected")
+
+				break;
+
+			case "disconnect-client": 
+				clients.delete(data.id)	
+	
+				console.log("client " + data.id + "disconnected")			
+				break;
+		}		
 
 	})
 })
