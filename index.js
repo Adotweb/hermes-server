@@ -1,18 +1,18 @@
 const http = require("http");
 const express = require("express");
 const app = express();
-const {Server} = require("socket.io")
 const path = require("path")
 const server = http.createServer(app)
 
-const io = new Server(server, {
-	cors:{
-		origin:"https://discord.com",
-		methods:["GET", "POST"],
-		credentials:true,
-		transports:["websocket", "polling"]
-	},
-	allowEIO3: true
+const {WebSocketServer} = require("ws");
+
+const wss = new WebSocketServer({server})
+
+wss.on("connection", ws => {
+	console.log("connection")
+	ws.on("message", msg => {
+
+	})
 })
 
 const cors = require("cors");
@@ -39,14 +39,6 @@ app.post("login", (req, res) => {
 
 })
 
-
-io.on("connection", socket => {
-
-	console.log("connection")
-	socket.emit("success", "connected!")
-
-
-})
 
 server.listen(PORT)
 
