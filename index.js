@@ -41,24 +41,11 @@ app.post("login", (req, res) => {
 
 
 io.on("connection", socket => {
-	
-		
-	console.log(socket.handshake.auth)	
+
+	console.log("connection")
+	socket.emit("success", "connected!")
 
 
-	socket.on("message-h", msg => {
-		socket.to(auth.token).emit("message", msg)
-	})
-
-
-	socket.on("message-c", msg => {
-		socket.to(auth.token).emit("message", msg)
-	})
-
-
-	socket.on("message-test", msg => {
-		console.log(msg)
-	})
 })
 
 server.listen(PORT)
