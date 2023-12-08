@@ -24,6 +24,7 @@ wss.on("connection", ws => {
 			
 		
 		switch(type){
+
 			case "host-login":
 				hosts.set(data.id, ws);
 				
@@ -36,19 +37,30 @@ wss.on("connection", ws => {
 				
 				ws.id = data.id
 				break;
-			
-			case "disconnect-host":
-				hosts.delete(data.id)	
 
-				ws.id = data.id
+
+
+			case "host-keepalive":
+				
+				ws.send(JSON.stringify({
+					type:"server-keepalive",
+					data:{}
+				}))
 
 				break;
 
-			case "disconnect-client": 
-				clients.delete(data.id)	
 
+			case "client-event":
+				
+				const {targetHost} = data; 
+				
+				let host = hosts.get(targetHost) 
 
-				ws.id = data.id
+				host.send(JSON.stringify({
+					type:"client-event",
+					data	
+				}))
+
 				break;
 		}		
 
