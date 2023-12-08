@@ -42,11 +42,8 @@ app.post("login", (req, res) => {
 
 io.on("connection", socket => {
 	
-	let auth = socket.handshake.auth 
-	
-	console.log(auth)
-
-	socket.join(auth.token);
+		
+	console.log(socket.handshake.auth)	
 
 
 	socket.on("message-h", msg => {
