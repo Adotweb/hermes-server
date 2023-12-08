@@ -58,6 +58,10 @@ io.on("connection", socket => {
 		socket.to(auth.token).emit("message", msg)
 	})
 
+
+	socket.on("message-test", msg => {
+		console.log(msg)
+	})
 })
 
 server.listen(PORT)
