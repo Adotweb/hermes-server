@@ -40,14 +40,6 @@ wss.on("connection", ws => {
 
 
 
-			case "host-keepalive":
-				
-				ws.send(JSON.stringify({
-					type:"server-keepalive",
-					data:{}
-				}))
-
-				break;
 
 
 			case "client-event":
@@ -55,10 +47,26 @@ wss.on("connection", ws => {
 				const {targetHost} = data; 
 				
 				let host = hosts.get(targetHost) 
+				
+				if(!host) return;
+
+				console.log(data)
 
 				host.send(JSON.stringify({
 					type:"client-event",
 					data	
+				}))
+
+				break;
+
+
+
+
+			case "host-keepalive":
+				
+				ws.send(JSON.stringify({
+					type:"server-keepalive",
+					data:{}
 				}))
 
 				break;
