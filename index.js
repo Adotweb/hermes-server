@@ -50,7 +50,6 @@ wss.on("connection", ws => {
 				
 				if(!host) return;
 
-				console.log(data, host)
 
 				host.send(JSON.stringify({
 					type:"client-event",
