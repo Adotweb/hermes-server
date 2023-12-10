@@ -1,18 +1,19 @@
 
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
 <style>
 body{
 	margin:0;
 }
 </style>
-<script src="https://cdn.tailwindcss.com"></script>
-
 
 
 <body>
-	
-	<div class="w-full column flex flex-col items-center">
-	
-		<div class="sticky top-0 left-0 w-full flex font-bold justify-between p-4">
+	<div class="sticky top-0 left-0 z-10 w-full flex font-bold justify-between p-4 backdrop-blur-lg">
 			<div class="left flex gap-4">
 				<a href="./docs">Docs</a>
 				<a href="./server">Server</a>
@@ -23,30 +24,106 @@ body{
 				<a href="./team">Ω</a>
 			</div>
 		</div>
+	<div class="w-full column flex flex-col items-center">
+	
+		
 
-		<img class="sticky" src="./hermes_discord.png" alt="">	
+		<img class="" src="./img/hermes_discord.png" alt="">	
 	
 		<div class="w-full flex flex-col items-center">
 			
 			<div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-indigo-800">Hermes</div>	
-			<div class="philo w-full flex flex-col md:flex-row px-20 pt-10 gap-4">
-				<div class="rounded-md w-full bg-gray-100 p-4">
+			<div class="philo w-full flex flex-col md:flex-row md:px-20 px-6 pt-10 gap-4 drop-shadow-md">
+				<div class="rounded-md md:w-[50%] w-full h-full bg-gray-100 p-4">
 					<div class="text-3xl font-bold">Philosophy</div>
 					<div class=" text-2xl pt-4">
-						It's not that deep bro its a remote host solution. But still we try to make it as simple as possible.
+						
+						Remote host solutions are not easy to setup, or to maintain. We at hermes try to give a solution by providing you with the code neccesary and a cloud service.
+						
 					</div>
-			
-				</div>
-				<div class="rounded-md w-full bg-gray-100 p-4">
-					<div class="text-3xl font-bold">About us (me)</div>
-					<div class=" text-2xl pt-4">
-						A student at a random school.	
-					</div>
+						
 				</div>
 
+				<img src="./img/example.png" alt="" class="rounded-md md:w-[50%] w-full p-4"/>
+
+
+			</div>
+
+			<div class="w-full px-20 pt-10">
+				<div class="text-4xl font-bold">Pricing (preview)</div>	
+			</div>
+
+			<div class="philo w-full flex flex-col md:flex-row md:px-20 px-6 pt-10 gap-4 drop-shadow-md">
+				<div class="self rounded-md w-full bg-gray-100 p-4 flex flex-col justify-between">
+					<div class="text-2xl font-bold ">
+						Heroic
+					</div>	
+					<ul class="pt-2 text-xl">
+						<li>- all features of hermes</li>
+						<li>- full access to our support team</li>
+						
+					</ul>
+					
+					<div class="w-full flex justify-center pt-5">
+						<button class="bg-gradient-to-r text-xl font-bold from-red-100 to-yellow-400 w-full p-2 rounded-md">
+						Free</button>
+					</div>
+				</div>
+				<div class="small rounded-md w-full bg-gray-100 p-4 flex flex-col justify-between">
+
+					<div class="text-2xl font-bold ">
+						Olympian	
+					</div>	
+					<ul class="pt-2 text-xl">
+						<li>- all features of hermes</li>
+						<li>- full access to our support team</li>
+						<li>- hosted by us</li>
+						<li>- limited to 1 user</li>
+					</ul>
+					
+					<div class="w-full flex justify-center pt-5">
+						<button class="bg-gradient-to-r text-xl font-bold from-red-100 to-yellow-400 w-full p-2 rounded-md">
+						5$ a month</button>
+					</div>
+				</div>
+				<div class="big rounded-md w-full bg-gray-100 p-4 flex flex-col justify-between">
+					<div class="text-2xl font-bold ">
+						Titan
+					</div>	
+					<ul class="pt-2 text-xl">
+						<li>- all features of hermes</li>
+						<li>- full access to our support team</li>
+						<li>- custom</li>			
+					</ul>
+					
+					<div class="w-full flex justify-center pt-5">
+						<button class="bg-gradient-to-r text-xl font-bold from-red-100 to-yellow-400 w-full p-2 rounded-md">
+						contact us</button>
+					</div>
+				</div>
 			</div>
 		</div>
 
+	</div>
+
+	<div class="mt-20 w-full bg-gray-700 grid grid-cols-3 grid-rows-2 p-4 font-bold text-white">
+		<div class="left flex flex-col items-center">
+			<u>Contact</u>
+			<div>E - mail: alu.minium@outlook.com</div>
+		</div>
+
+		<div class="left flex flex-col items-center">
+
+			<u>About</u>
+
+		</div>
+
+		<div class="left flex flex-col items-center">
+		
+			<u>Services</u>
+		</div>
+
+		<div class="col-span-3 flex justify-center mt-10 text-transparent bg-clip-text bg-gradient-to-r from-teal-100 to-indigo-300">Hermes by Ω</div>
 	</div>
 
 </body>
