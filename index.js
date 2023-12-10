@@ -4,6 +4,8 @@ const app = express();
 const path = require("path")
 const server = http.createServer(app)
 
+const {client} = require("./db/client.js")
+
 const {WebSocketServer} = require("ws");
 
 const wss = new WebSocketServer({server})
@@ -83,7 +85,13 @@ wss.on("connection", ws => {
 
 const cors = require("cors");
 
+
+
+const {MongoClient, ServerApiVersion} = require("mongodb"); 
+
+
 const PORT = process.env.PORT || 5000
+
 
 
 app.use(cors())
@@ -105,6 +113,27 @@ app.post("login", (req, res) => {
 
 })
 
+
+
+
+app.get("/posts", async (req, res) => {
+
+
+	try{
+
+		const db = client.db("hermes")
+		const collection = db.collection("subscriptions")
+
+		let r = await collection.findOne()
+		
+		res.send(r)
+
+	}finally{
+
+		await client.close();
+	}
+
+})
 
 server.listen(PORT)
 
